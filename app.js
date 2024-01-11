@@ -81,4 +81,4 @@ const start = async (text, name="output") => {
   );
 };
 
-start("高数30讲");
+start("高数18讲");
