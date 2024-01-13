@@ -29,10 +29,8 @@ const formateTime = (duration) => {
   const str = `时长${hours ? hours + ":" : ""}${minutes}:${seconds}`;
   return str;
 };
-
 const read_files = async (filepath, arr) => {
   const files = fs.readdirSync(filepath);
-  const promises = [];
   /* 每次递归创建父节点 */
   const obj = {
     data: {
@@ -59,12 +57,11 @@ const read_files = async (filepath, arr) => {
       });
     }
   }
-
-  arr.push(obj);
+  obj.data.text ? arr.push(obj) : "";
   return arr;
 };
 
-const start = async (text, name="output") => {
+const start = async (text, name = "output") => {
   const arr = await read_files(dir_path, []);
   fs.writeFileSync(
     `./${name}.km`,
