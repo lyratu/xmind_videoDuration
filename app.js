@@ -44,6 +44,7 @@ const read_files = async (filepath, arr) => {
     let filePath = path.join(filepath, fileName);
     let stats = fs.statSync(filePath);
     if (stats.isDirectory()) {
+      console.log(fileName + '✔︎');
       await read_files(filePath, arr);
     } else if (stats.isFile() && /^.*\.mp4$/.test(fileName)) {
       const time = await getVideoTime(filePath);
